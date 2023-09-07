@@ -1,0 +1,29 @@
+{
+  "name": "api_jacobs_ecommerce",
+  "version": "1.0.0",
+  "description": "\u001bjacob ecommerce api\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[\u001a\u001a\u001a\u001aion:\u001b[C\u001b[Cacob e\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[jacob ecommerce api",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon --exec babel-node index.js",
+    "build": "babel index.js -d dist"
+  },
+  "author": "Jacobo Hernandez",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parse": "^0.1.0",
+    "connect-multiparty": "^2.2.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "express-promise-router": "^4.1.1",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^7.5.0",
+    "nodemon": "^3.0.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.22.15",
+    "@babel/core": "^7.22.15",
+    "@babel/node": "^7.22.15",
+    "@babel/preset-env": "^7.22.15"
+  }
+}
