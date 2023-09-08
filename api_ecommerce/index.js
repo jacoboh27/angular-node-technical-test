@@ -2,7 +2,7 @@ import express from 'express'
 import cors from 'cors'
 import path from 'path'
 import mongoose from 'mongoose'
-//import router from 
+import router from './router'
 
 //database connection
 mongoose.Promise = global.Promise;
@@ -24,7 +24,7 @@ app.use(express.urlencoded(
     }
 ));
 app.use(express.static(path.join(__dirname, 'public')));
-//app.use('api/', router);
+app.use('/api/', router);
 
 app.set('port', process.env.PORT || 3000);
 app.listen(app.get('port'), () => {
