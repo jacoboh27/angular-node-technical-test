@@ -10,5 +10,6 @@ router.post("/register",[auth.verifyAdmin,path],categoriecontroller.register);
 router.put("/update",[auth.verifyAdmin,path],categoriecontroller.update);
 router.get("/list",auth.verifyAdmin,categoriecontroller.list);
 router.delete("/delete",auth.verifyAdmin,categoriecontroller.remove);
+router.get("/uploads/categorie/:img",categoriecontroller.get_image);
 
 export default router;
