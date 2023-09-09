@@ -57,6 +57,9 @@ export default {
                 var avatar_name = name[2];
                 console.log("avatar_name", avatar_name);
             }
+            if (req.body.password) {
+                req.body.password = await bcrypt.hash(req.body.password, 10);
+            }
             const UserT = await models.User.findByIdAndUpdate({_id: req.body._id}, req.body);
             res.status(200).json({
                 message: 'USUARIO MODIFICADO EXITOSAMENTE',

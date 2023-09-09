@@ -1,11 +1,12 @@
 import routerx from 'express-promise-router'
 import UserController from '../controllers/UserController'
+import auth from '../middlewares/auth'
 
 const router = routerx();
 
 router.post("/register", UserController.register);
 router.put("/update", UserController.update);
-router.get("/list", UserController.list);
+router.get("/list", auth.verifyAdmin, UserController.list);
 router.post("/login", UserController.login);
 router.delete("/delete", UserController.remove);
 

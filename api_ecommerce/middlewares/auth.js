@@ -34,7 +34,7 @@ export default {
                 next();
             } else {
                 res.status(403).send({
-                    message: 'USUARIO INVALIDO'
+                    message: 'NO TIENES PERMISO PARA REALIZAR ESTA ACCION'
                 });
             }
         } else {
