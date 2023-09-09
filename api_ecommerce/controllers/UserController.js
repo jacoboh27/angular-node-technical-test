@@ -49,6 +49,41 @@ export default {
             console.log("error: ", error);
         }
     },
+    login_admin: async(req, res) => {
+        try {
+            const user = await models.User.findOne({email: req.body.email, state:1, rol: "admin"});
+            if (user) {
+                let compare = await bcrypt.compare(req.body.password, user.password);
+                if (compare) {
+                    let tokenUser = await token.encode(user._id, user.rol, user.email);
+                    const USER_FRONTEND = {
+                        token: tokenUser,
+                        user: {
+                            name: user.name,
+                            surname: user.surname,
+                            email: user.email,
+                            rol: user.rol,
+                            avatar: user.avatar
+                        }
+                    }
+                    res.status(200).json({USER_FRONTEND: USER_FRONTEND});
+                } else {
+                    res.status(500).send({
+                        message: 'CONTRASEÑA INCORRECTA'
+                    });   
+                }
+            } else {
+                res.status(500).send({
+                    message: 'EMAIL INVALIDO'
+                }); 
+            }
+        } catch (error) {
+            res.status(500).send({
+                message: 'OCURRIO UN ERROR'
+            });
+            console.log("error: ", error);
+        }
+    },
     update: async(req, res) => {
         try {
             if (req.files) {
