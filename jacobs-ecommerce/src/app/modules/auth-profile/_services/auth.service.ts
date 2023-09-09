@@ -54,7 +54,7 @@ export class AuthService {
     return true;
   }
 
-  registro(data:any){
+  registerUser(data:any){
     let URL = URL_SERVICIOS + "users/register";
     return this.http.post(URL, data);
   }
