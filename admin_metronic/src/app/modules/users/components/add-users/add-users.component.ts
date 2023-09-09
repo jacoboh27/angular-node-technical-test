@@ -45,7 +45,7 @@ export class AddUsersComponent implements OnInit {
     this.userService.createUser(data).subscribe((resp:any) => {
       console.log(resp);
       this.UserC.emit(resp.user);
-      this.toaster.open(NoticyAlertComponent,{text:`success-¡USUARIO REGISTRADO CON EXITO!`});
+      this.toaster.open(NoticyAlertComponent,{text:`success-¡USUARIO REGISTRADO EXITOSAMENTE!`});
       this.modal.close();
     }, (error) => {
       if(error.error){

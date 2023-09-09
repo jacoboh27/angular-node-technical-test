@@ -26,7 +26,7 @@ export class DeleteUserComponent implements OnInit {
     this.userService.deleteUser(this.user_selected._id).subscribe((resp:any) => {
       console.log(resp);
       this.UserD.emit("");
-      this.toaster.open(NoticyAlertComponent,{text:`success-¡REGISTRO DE USUARIO ELIMINADO CON EXITO!`});
+      this.toaster.open(NoticyAlertComponent,{text:`success-¡REGISTRO DE USUARIO ELIMINADO EXITOSAMENTE!`});
       this.modal.close();
     }, (error) => {
       if(error.error){

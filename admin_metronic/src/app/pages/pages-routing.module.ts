@@ -68,6 +68,13 @@ const routes: Routes = [
           ),
       },
       {
+        path: 'categorias',
+        loadChildren: () =>
+          import('../modules/categories/categories.module').then(
+            (m) => m.CategoriesModule
+          ),
+      },
+      {
         path: '',
         redirectTo: '/dashboard',
         pathMatch: 'full',

@@ -50,7 +50,7 @@ export class EditUsersComponent implements OnInit {
     this.userService.updateUser(data).subscribe((resp:any) => {
       console.log(resp);
       this.UserE.emit(resp.user);
-      this.toaster.open(NoticyAlertComponent,{text:`success-¡USUARIO ACTUALIZADO CON EXITO!`});
+      this.toaster.open(NoticyAlertComponent,{text:`success-¡USUARIO ACTUALIZADO EXITOSAMENTE!`});
       this.modal.close();
     }, (error) => {
       if(error.error){
