@@ -1,6 +1,7 @@
 import bcrypt from 'bcryptjs'
 import models from '../models'
 import token from '../services/token'
+import resources from '../resources'
 
 export default {
     register: async(req, res) => {
@@ -8,6 +9,27 @@ export default {
             req.body.password = await bcrypt.hash(req.body.password, 10);
             const user = await models.User.create(req.body);
             res.status(200).json(user);
+        } catch (error) {
+            res.status(500).send({
+                message: 'NO FUE POSIBLE REGISTRAR AL USUARIO'
+            });
+            console.log("error: ", error);
+        }
+    },
+    register_admin: async(req, res) => {
+        try {
+            const validateUser = await models.User.findOne({email: req.body.email});
+            if (validateUser) {
+                res.status(500).send({
+                    message: 'EL CORREO YA ESTÁ ASOCIADO A UNA CUENTA EXISTENTE'
+                });
+            }
+            req.body.rol = "admin";
+            req.body.password = await bcrypt.hash(req.body.password, 10);
+            let user = await models.User.create(req.body);
+            res.status(200).json({
+                user: resources.User.user_list(user)
+            });
         } catch (error) {
             res.status(500).send({
                 message: 'NO FUE POSIBLE REGISTRAR AL USUARIO'
@@ -95,10 +117,11 @@ export default {
             if (req.body.password) {
                 req.body.password = await bcrypt.hash(req.body.password, 10);
             }
-            const UserT = await models.User.findByIdAndUpdate({_id: req.body._id}, req.body);
+            await models.User.findByIdAndUpdate({_id: req.body._id}, req.body);
+            let UserT = await models.User.findOne({_id: req.body._id});
             res.status(200).json({
                 message: 'USUARIO MODIFICADO EXITOSAMENTE',
-                user: UserT
+                user: resources.User.user_list(UserT)
             });
         } catch (error) {
             res.status(500).send({
@@ -109,14 +132,17 @@ export default {
     },
     list: async(req, res) => {
         try {
-            var search = req.body.search;
-            const Users = await models.User.find({
+            var search = req.query.search;
+            let Users = await models.User.find({
                 $or:[
                     {"name": new RegExp(search, "i")},
                     {"surname": new RegExp(search, "i")},
                     {"email": new RegExp(search, "i")}
                 ]
             }).sort({'createdAt': -1});
+            Users = Users.map((user) => {
+                return resources.User.user_list(user);
+            });
             res.status(200).json({
                 users: Users
             });
@@ -129,7 +155,7 @@ export default {
     },
     remove: async(req, res) => {
         try {
-            const UserT = await models.User.findByIdAndDelete({_id: req.body._id});
+            const UserT = await models.User.findByIdAndDelete({_id: req.query._id});
             res.status(200).json({
                 message: 'USUARIO ELIMINADO EXITOSAMENTE'
             });

@@ -5,6 +5,7 @@ import auth from '../middlewares/auth'
 const router = routerx();
 
 router.post("/register", UserController.register);
+router.post("/register_admin", auth.verifyAdmin, UserController.register_admin);
 router.put("/update", UserController.update);
 router.get("/list", auth.verifyAdmin, UserController.list);
 router.post("/login", UserController.login);
