@@ -42,5 +42,24 @@ export const AsideMenuAdminGeneral = {
           }
         ]
       },
+      {
+        title: 'Productos',
+        root: true,
+        name: "productos",
+        bullet: 'dot',
+        icon: 'flaticon2-user-outline-symbol',
+        svg: './assets/media/svg/icons/Devices/TV2.svg',
+        page: '/productos',
+        submenu: [
+          {
+            title: 'Crear Producto',
+            page: '/productos/crear-producto'
+          },
+          {
+            title: 'Lista Productos',
+            page: '/productos/lista-productos'
+          },
+        ]
+      }
     ]
 }
