@@ -16,7 +16,7 @@ export default {
             res.status(200).json(categorie);
         } catch (error) {
             res.status(500).send({
-                message: "OCURRIO UN PROBLEMA"
+                message: "OCURRIÓ UN ERROR"
             });
             console.log(error);
         }
@@ -38,7 +38,7 @@ export default {
             });
         } catch (error) {
             res.status(500).send({
-                message: "OCURRIO UN PROBLEMA"
+                message: "OCURRIÓ UN ERROR"
             });
             console.log(error);
         }
@@ -61,7 +61,7 @@ export default {
             });
         } catch (error) {
             res.status(500).send({
-                message: "OCURRIO UN PROBLEMA"
+                message: "OCURRIÓ UN ERROR"
             });
             console.log(error);
         }
@@ -80,7 +80,7 @@ export default {
             })
         } catch (error) {
             res.status(500).send({
-                message: "OCURRIO UN PROBLEMA"
+                message: "OCURRIÓ UN ERROR"
             });
             console.log(error);
         }
@@ -93,7 +93,7 @@ export default {
             });
         } catch (error) {
             res.status(500).send({
-                message: "OCURRIO UN PROBLEMA"
+                message: "OCURRIÓ UN ERROR"
             });
             console.log(error);
         }
