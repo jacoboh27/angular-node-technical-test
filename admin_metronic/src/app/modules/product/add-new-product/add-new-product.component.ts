@@ -77,7 +77,7 @@ export class AddNewProductComponent implements OnInit {
     formData.append("title", this.title);
     formData.append("categorie", this.categorie);
     formData.append("sku", this.sku);
-    formData.append("price_soles", this.price_pesos);
+    formData.append("price_pesos", this.price_pesos);
     formData.append("description", this.description);
     formData.append("resumen", this.resumen);
     formData.append("tags", JSON.stringify(this.tags));
