@@ -14,20 +14,20 @@
         <div class="form-group row">
             <div class="col-6">
                 <div class="form-group">
-                    <label>Título del producto: <span class="text-danger">*</span></label>
+                    <label>Título: <span class="text-danger">*</span></label>
                     <input type="text" class="form-control" placeholder="" [(ngModel)]="title" name="title" />
-                    <span class="form-text text-muted">Ingresa el Título del producto.</span>
+                    <span class="form-text text-muted">Ingresa el título del producto</span>
                 </div>
             </div>
             <div class="col-3">
                 <div class="form-group">
-                    <label>SKU del producto: <span class="text-danger">*</span></label>
+                    <label>Código (SKU): <span class="text-danger">*</span></label>
                     <input type="text" class="form-control" placeholder="" [(ngModel)]="sku" name="sku" />
                 </div>
             </div>
             <div class="col-3">
                 <div class="form-group">
-                    <label>Seleccionar categoria: <span class="text-danger">*</span></label>
+                    <label>Categoría: <span class="text-danger">*</span></label>
                     <select class="form-control" name="categorie" [(ngModel)]="categorie">
                         <option value="">Ninguna</option>
                         <ng-container *ngFor="let item of categories">
@@ -47,7 +47,7 @@
                 </div>
             </div>
             <div class="col-4">
-                <label class="form-label">Sube la imagen: *</label>
+                <label class="form-label">Imagen Portada: <span class="text-danger">*</span></label>
                 <div class="custom-file">
                     <input type="file" class="custom-file-input" id="customFile"
                         accept=".jpeg, .bmp, .jpg, .png, .gif, .webp" (change)="processFile($event)" />
@@ -63,11 +63,11 @@
 
         <div class="form-group row">
             <div class="col-6">
-                <label class="form-label">Resumen del producto: *</label>
+                <label class="form-label">Resumen: <span class="text-danger">*</span></label>
                 <textarea class="form-control" name="resumen" [(ngModel)]="resumen" placeholder="" rows="4"></textarea>
             </div>
             <div class="col-6">
-                <label class="form-label">Descripción: *</label>
+                <label class="form-label">Descripción: <span class="text-danger">*</span></label>
                 <editor [(ngModel)]="description" [init]="{
             height: 250,
             language: 'es',
@@ -118,7 +118,7 @@
             </div>
         </div>
 
-        <div class="form-group row">
+        <div class="form-group row mx-0">
             <button class="btn btn-primary" (click)="save()">CREAR PRODUCTO</button>
         </div>
     </div>

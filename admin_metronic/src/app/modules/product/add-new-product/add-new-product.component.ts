@@ -49,7 +49,7 @@ export class AddNewProductComponent implements OnInit {
   processFile($event){
     if($event.target.files[0].type.indexOf("image") < 0){
       this.imagen_previzualizacion = null;
-      this.toaster.open(NoticyAlertComponent,{text:`danger-'Es necesario ingresar un archivo de tipo imagen`});
+      this.toaster.open(NoticyAlertComponent,{text:`danger-¡Es necesario ingresar un archivo de tipo imagen!`});
       return;
     }
     this.imagen_file = $event.target.files[0];
@@ -70,7 +70,7 @@ export class AddNewProductComponent implements OnInit {
   save(){
     if(!this.title || !this.categorie || !this.price_pesos || !this.resumen || !this.description
       || !this.sku || this.tags.length == 0 || !this.imagen_file){
-        this.toaster.open(NoticyAlertComponent,{text:`danger-'ES NECESARIO DIGITAR TODOS LOS CAMPOS DEL FORMULARIO`});
+        this.toaster.open(NoticyAlertComponent,{text:`danger-¡ES NECESARIO DIGITAR TODOS LOS CAMPOS DEL FORMULARIO!`});
         return;
     }
     let formData = new FormData();
@@ -89,7 +89,7 @@ export class AddNewProductComponent implements OnInit {
         this.toaster.open(NoticyAlertComponent,{text:`danger-¡EL PRODUCTO YA EXISTE, ELIGE OTRO NOMBRE!`});
         return;
       } else {
-        this.toaster.open(NoticyAlertComponent,{text:`primary-EL PRODUCTO SE REGISTRO EXITOSAMENTE`});
+        this.toaster.open(NoticyAlertComponent,{text:`primary-¡EL PRODUCTO SE REGISTRÓ EXITOSAMENTE!`});
         this.title = null; 
         this.categorie = null;
         this.sku = null;

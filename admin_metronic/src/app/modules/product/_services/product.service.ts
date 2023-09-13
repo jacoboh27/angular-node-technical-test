@@ -25,6 +25,7 @@ export class ProductService {
     this.isLoadingSubject.next(true);
     let headers = new HttpHeaders({'token': this.authservice.token});
     let LINK = "";
+    console.log("value categorie:", categorie);
     if (search){
       LINK+= "?search=" + search;
     } else {
@@ -32,13 +33,15 @@ export class ProductService {
     }
     if (categorie){
       LINK+= "&categorie=" + categorie;
+    } else {
+      LINK+= "&categorie=";
     }
     let URL = URL_SERVICIOS + "/products/list" + LINK;
     return this.http.get(URL, {headers: headers}).pipe(
       finalize(() => this.isLoadingSubject.next(false))
     );
   }
-
+  
   showProduct(product_id=''){
     this.isLoadingSubject.next(true);
     let headers = new HttpHeaders({'token': this.authservice.token});
