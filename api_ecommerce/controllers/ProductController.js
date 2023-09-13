@@ -1,5 +1,5 @@
 import models from '../models'
-import resources from '../resources';
+import resources from '../resources'
 import fs from 'fs'
 import path from 'path'
 
@@ -65,28 +65,29 @@ export default {
     list:async(req,res) => {
         try {
             var filter = [];
-            if(req.query.search){
-                filter.push(
-                    {"title": new RegExp(req.query.search,'i')},
-                );
+            if (req.query.search && req.query.search.trim() !== '') { 
+                filter.push({ title: new RegExp(req.query.search, "i") });
             }
-            if(req.query.categorie){
-                filter.push(
-                    {"categorie": req.query.categorie}
-                );
+            if (req.query.categorie && req.query.categorie.trim() !== '') { 
+                filter.push({ categorie: req.query.categorie });
             }
-            let products = await models.Product.find({
-                $and:filter,
-            }).populate('categorie');
-            products = products.map(product => {
+              
+            let products = []; 
+            if (filter.length > 0) { 
+            products = await models.Product.find({ $and: filter }).populate("categorie"); 
+            } else { 
+            products = await models.Product.find().populate("categorie"); 
+            }
+            products = products.map((product) => {
                 return resources.Product.product_list(product);
             });
+
             res.status(200).json({
                 products: products,
-            });
+            })
         } catch (error) {
             res.status(500).send({
-                message: "OCURRIÓ UN ERROR"
+                message: "COURRIO UN PROBLEMA"
             });
         }
     },

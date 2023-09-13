@@ -5,7 +5,8 @@ export default {
             title: product.title,
             sku: product.sku,
             slug: product.slug,
-            imagen: 'http://localhost:3000'+'/api/products/uploads/product/'+product.portada,//*
+            //imagen: 'http://localhost:3000'+'/api/products/uploads/product/'+product.portada,
+            imagen: product.portada,
             categorie: product.categorie,
             price_pesos: product.price_pesos,
             stock: product.stock,
